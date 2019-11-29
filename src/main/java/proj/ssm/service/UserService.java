@@ -10,7 +10,7 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    public User findById(int id){
+    public User findUserById(int id){
         return userMapper.selectById(id);
     }
 

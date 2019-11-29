@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="css/global.css" />-->
+    <link rel="stylesheet" th:href=@{/css/global.css} />
     <title>Community-Home</title>
 </head>
 <body>
@@ -115,54 +115,54 @@
                 </div>
             </div>
 
-            <!-- 帖子列表 -->
-<!--            <ul class="list-unstyled">-->
-<!--                <li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">-->
-<!--                    <a href="site/profile.html">-->
-<!--                        <img th:src="${map.user.headerUrl}" class="mr-4 rounded-circle" alt="用户头像" style="width:50px;height:50px;">-->
-<!--                    </a>-->
-<!--                    <div class="media-body">-->
-<!--                        <h6 class="mt-0 mb-3">-->
-<!--                            <a href="#" th:utext="${map.post.title}">备战春招，面试刷题跟他复习，一个月全搞定！</a>-->
-<!--                            <span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>-->
-<!--                            <span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>-->
-<!--                        </h6>-->
-<!--                        <div class="text-muted font-size-12">-->
-<!--                            <u class="mr-3" th:utext="${map.user.username}">寒江雪</u> 发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15 15:32:18</b>-->
-<!--                            <ul class="d-inline float-right">-->
-<!--                                <li class="d-inline ml-2">赞 11</li>-->
-<!--                                <li class="d-inline ml-2">|</li>-->
-<!--                                <li class="d-inline ml-2">回帖 7</li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--            </ul>-->
-            <!-- 分页 -->
-<!--            <nav class="mt-5" th:if="${page.rows>0}">-->
-<!--                <ul class="pagination justify-content-center">-->
-<!--                    <li class="page-item">-->
-<!--                        <a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>-->
-<!--                    </li>-->
-<!--                    <li th:class="|page-item ${page.current==1?'disabled':''}|">-->
-<!--                        <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a></li>-->
-<!--                    <li th:class="|page-item ${i==page.current?'active':''}|" th:each="i:${#numbers.sequence(page.from,page.to)}">-->
-<!--                        <a class="page-link" href="#" th:text="${i}">1</a>-->
-<!--                    </li>-->
-<!--                    <li th:class="|page-item ${page.current==page.total?'disabled':''}|">-->
-<!--                        <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">下一页</a>-->
-<!--                    </li>-->
-<!--                    <li class="page-item">-->
-<!--                        <a class="page-link" th:href="@{${page.path}(current=${page.total})}">末页</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </nav>-->
+             帖子列表
+            <ul class="list-unstyled">
+                <li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">
+                    <a href="site/profile.html">
+                        <img th:src="${map.user.headerUrl}" class="mr-4 rounded-circle" alt="用户头像" style="width:50px;height:50px;">
+                    </a>
+                    <div class="media-body">
+                        <h6 class="mt-0 mb-3">
+                            <a href="#" th:utext="${map.post.title}">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            <span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>
+                            <span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>
+                        </h6>
+                        <div class="text-muted font-size-12">
+                            <u class="mr-3" th:utext="${map.user.username}">寒江雪</u> 发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15 15:32:18</b>
+                            <ul class="d-inline float-right">
+                                <li class="d-inline ml-2">赞 11</li>
+                                <li class="d-inline ml-2">|</li>
+                                <li class="d-inline ml-2">回帖 7</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+             分页
+            <nav class="mt-5" th:if="${page.rows>0}">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>
+                    </li>
+                    <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                        <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a></li>
+                    <li th:class="|page-item ${i==page.current?'active':''}|" th:each="i:${#numbers.sequence(page.from,page.to)}">
+                        <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}">1</a>
+                    </li>
+                    <li th:class="|page-item ${page.current==page.total?'disabled':''}|">
+                        <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">下一页</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{${page.path}(current=${page.total})}">末页</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
 
-<script src="js/global.js"></script>
-<script src="js/index.js"></script>
+<script src="@{/js/global.js}"></script>
+<script src="@{/js/index.js}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
