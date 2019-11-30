@@ -1,14 +1,20 @@
 package proj.ssm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import proj.ssm.entity.User;
 import proj.ssm.service.UserService;
+import proj.ssm.util.HostHolder;
 import proj.ssm.util.SsmConstant;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import java.util.Map;
 
@@ -16,7 +22,13 @@ import java.util.Map;
 public class LoginController implements SsmConstant {
 
     @Autowired
+    HostHolder hostHolder;
+
+    @Autowired
     private UserService userService;
+
+    @Value("${server.servlet.context-path}")
+    private String contextPath;
 
     @RequestMapping(path = "/register", method = RequestMethod.GET)
     public String getRegisterPage() {
@@ -58,6 +70,34 @@ public class LoginController implements SsmConstant {
             model.addAttribute("target", "/index");
         }
         return "/site/operate-result";
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String login(String username, String password, String code, boolean rememberme,
+                        Model model, HttpServletResponse response) {
+
+        // 检查账号,密码
+        int expiredSeconds = rememberme ? REMEMBER_EXPIRED_SECONDS : DEFAULT_EXPIRED_SECONDS;
+        Map<String, Object> map = userService.login(username, password, expiredSeconds);
+        if (map.containsKey("ticket")) {
+
+            Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
+            cookie.setPath(contextPath);
+            cookie.setMaxAge(expiredSeconds);
+            response.addCookie(cookie);
+
+            return "redirect:/index";
+        } else {
+            model.addAttribute("usernameMsg", map.get("usernameMsg"));
+            model.addAttribute("passwordMsg", map.get("passwordMsg"));
+            return "/site/login";
+        }
+    }
+
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    public String logout(@CookieValue("ticket") String ticket) {
+        userService.logout(ticket);
+        return "redirect:/login";
     }
 
 }
