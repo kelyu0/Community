@@ -2,6 +2,7 @@ package proj.ssm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.HtmlUtils;
 import proj.ssm.dao.DiscussPostMapper;
 import proj.ssm.entity.DiscussPost;
 
@@ -21,4 +22,15 @@ public class DiscussPostService {
         return discussPostMapper.selectDiscussPostRows(userId);
     }
 
+    public int addDiscussPost(DiscussPost post) {
+        if (post == null) {
+            throw new IllegalArgumentException("参数不能为空!");
+        }
+
+        // 转义HTML标记
+        post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
+        post.setContent(HtmlUtils.htmlEscape(post.getContent()));
+
+        return discussPostMapper.insertDiscussPost(post);
+    }
 }
