@@ -9,7 +9,9 @@ import proj.ssm.entity.DiscussPost;
 import proj.ssm.entity.Page;
 import proj.ssm.entity.User;
 import proj.ssm.service.DiscussPostService;
+import proj.ssm.service.LikeService;
 import proj.ssm.service.UserService;
+import proj.ssm.util.SsmConstant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,13 +19,16 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController {
+public class HomeController implements SsmConstant {
 
     @Autowired
     private DiscussPostService discussPostService;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LikeService likeService;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public String getIndexPage(Model model, Page page) {
@@ -40,6 +45,8 @@ public class HomeController {
                 map.put("post", post);
                 User user = userService.findUserById(post.getUserId());
                 map.put("user", user);
+                long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, post.getId());
+                map.put("likeCount", likeCount);
                 discussPosts.add(map);
             }
         }
