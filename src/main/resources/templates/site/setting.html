@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
+	<link rel="icon" href="http://q5yqnjmvb.bkt.clouddn.com/cafe.png"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" th:href="@{/css/global.css}" />
 	<link rel="stylesheet" th:href="@{/css/login.css}" />
-	<title>牛客网-账号设置</title>
+	<title>Setting</title>
 </head>
 <body>
 	<div class="nk-container">
@@ -20,17 +20,18 @@
 		<div class="main">
 			<div class="container p-5 mt-3 mb-3">
 				<!-- 上传头像 -->
-				<h6 class="text-left text-info border-bottom pb-2">上传头像</h6>
+				<h6 class="text-left text-info border-bottom pb-2">Upload Header</h6>
 				<form class="mt-5" method="post" enctype="multipart/form-data" th:action="@{/user/upload}">
 					<div class="form-group row mt-4">
-						<label for="head-image" class="col-sm-2 col-form-label text-right">选择头像:</label>
-						<div class="col-sm-10">
+						<label for="head-image" class="col-sm-4 col-form-label text-right">Chose Header:</label>
+						<div class="col-sm-8">
 							<div class="custom-file">
 								<input type="file" th:class="|custom-file-input ${error!=null?'is-invalid':''}|"
 									   id="head-image" name="headerImage" lang="es" required="">
-								<label class="custom-file-label" for="head-image" data-browse="文件">选择一张图片</label>
+<!--								<button for="head-image" data-browse="File">Chose a picture</button>-->
+								<label class="custom-file-label" for="head-image" data-browse="File">Chose a picture</label>
 								<div class="invalid-feedback" th:text="${error}">
-									该账号不存在!
+									Account non exist!
 								</div>
 							</div>
 						</div>
@@ -38,44 +39,44 @@
 					<div class="form-group row mt-4">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10 text-center">
-							<button type="submit" class="btn btn-info text-white form-control">立即上传</button>
+							<button type="submit" class="btn btn-info text-white form-control">Upload</button>
 						</div>
 					</div>
 				</form>
 				<!-- 修改密码 -->
-				<h6 class="text-left text-info border-bottom pb-2 mt-5">修改密码</h6>
+				<h6 class="text-left text-info border-bottom pb-2 mt-5">Modify Password</h6>
 				<form class="mt-5">				
 					<div class="form-group row mt-4">
-						<label for="old-password" class="col-sm-2 col-form-label text-right">原密码:</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="old-password" placeholder="请输入原始密码!" required>
+						<label for="old-password" class="col-sm-4 col-form-label text-right">Old Password:</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" id="old-password" placeholder="Old!" required>
 							<div class="invalid-feedback">
-								密码长度不能小于8位!
+								8 letters minimal!
 							</div>							
 						</div>
 					</div>
 					<div class="form-group row mt-4">
-						<label for="new-password" class="col-sm-2 col-form-label text-right">新密码:</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="new-password" placeholder="请输入新的密码!" required>
+						<label for="new-password" class="col-sm-4 col-form-label text-right">New Password:</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" id="new-password" placeholder="New!" required>
 							<div class="invalid-feedback">
-								密码长度不能小于8位!
+								8 letters minimal!
 							</div>							
 						</div>
 					</div>
 					<div class="form-group row mt-4">
-						<label for="confirm-password" class="col-sm-2 col-form-label text-right">确认密码:</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="confirm-password" placeholder="再次输入新密码!" required>
+						<label for="confirm-password" class="col-sm-4 col-form-label text-right">Confirm new Password:</label>
+						<div class="col-sm-8">
+							<input type="password" class="form-control" id="confirm-password" placeholder="New again!" required>
 							<div class="invalid-feedback">
-								两次输入的密码不一致!
+								2 new passwords inconsistent!
 							</div>								
 						</div>
 					</div>				
 					<div class="form-group row mt-4">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10 text-center">
-							<button type="submit" class="btn btn-info text-white form-control">立即保存</button>
+							<button type="submit" class="btn btn-info text-white form-control">Save</button>
 						</div>
 					</div>
 				</form>				

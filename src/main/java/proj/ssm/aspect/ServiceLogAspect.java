@@ -21,9 +21,7 @@ public class ServiceLogAspect {
     private static final Logger logger = LoggerFactory.getLogger(ServiceLogAspect.class);
 
     @Pointcut("execution(* proj.ssm.service.*.*(..))")
-    public void pointcut() {
-
-    }
+    public void pointcut() {}
 
     @Before("pointcut()")
     public void before(JoinPoint joinPoint) {

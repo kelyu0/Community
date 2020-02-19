@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="http://q5yqnjmvb.bkt.clouddn.com/cafe.png"/>
+    <title>JavaForum - Activation Mail</title>
+</head>
+<body>
+<div>
+    <p>
+        <b th:text="${email}">xxx@xxx.com</b>, Hello!
+    </p>
+    <p>
+        Your are registering JavaForum, this is a activation email, please click
+        <a th:href="${url}">this link</a>
+        to active your account!
+    </p>
+</div>
+</body>
+</html>

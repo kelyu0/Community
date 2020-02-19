@@ -1,3 +1,4 @@
+
 html {
 	height: 100%;
 }
@@ -21,9 +22,9 @@ body {
 }
 
 header .navbar-brand {
-	background: url('http://static.nowcoder.com/images/res/logo/logo-v3.png') no-repeat;
-	background-size: 147px 42px;
-	width: 147px;
+    background: url('http://q5yqnjmvb.bkt.clouddn.com/cafe.jpeg') no-repeat;
+	background-size: 47px 42px;
+	width: 47px;
 	height: 42px;
 	margin: 5px 15px 5px 0;
 }

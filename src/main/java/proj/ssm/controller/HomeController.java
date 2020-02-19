@@ -1,6 +1,8 @@
 package proj.ssm.controller;
 
+import com.qiniu.util.Auth;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,16 @@ public class HomeController implements SsmConstant {
     @Autowired
     private LikeService likeService;
 
+//    @Value("${qiniu.key.access}")
+//    private String accessKey;
+//    @Value("${qiniu.key.secret}")
+//    private String secretKey;
+//    @Value("${qiniu.bucket.img}")
+//    private String img;
+    @Value("${quniu.bucket.url}")
+    private String imgBucketUrl;
+
+
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public String getIndexPage(Model model, Page page) {
         // 方法调用钱,SpringMVC会自动实例化Model和Page,并将Page注入Model.
@@ -51,6 +63,12 @@ public class HomeController implements SsmConstant {
             }
         }
         model.addAttribute("discussPosts", discussPosts);
+
+
+//        Auth auth = Auth.create(accessKey, secretKey);
+//        String downloadToken = auth.privateDownloadUrl(imgBucketUrl+"/java.png")
+        String downloadUrl = imgBucketUrl+"cafe.png";
+        model.addAttribute("iconPath",downloadUrl);
         return "/index";
     }
 

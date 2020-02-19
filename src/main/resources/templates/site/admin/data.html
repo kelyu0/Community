@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
+	<link rel="icon" href="http://q5yqnjmvb.bkt.clouddn.com/cafe.png"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" href="../../css/global.css" />
-	<title>牛客网-404</title>
+	<title>JavaForum - Data</title>
 </head>
 <body>
 	<div class="nk-container">
@@ -49,7 +49,7 @@
 							</li>
 						</ul>
 						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" action="../search.html">
+						<form class="form-inline my-2 my-lg-0" action="../site/search.html">
 							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
 							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
 						</form>
@@ -60,9 +60,36 @@
 
 		<!-- 内容 -->
 		<div class="main">
-			<div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
-				<img src="../../img/404.png" >
+			<!-- 网站UV -->
+			<div class="container pl-5 pr-5 pt-3 pb-3 mt-3">
+				<h6 class="mt-3"><b class="square"></b>Unique Visitor</h6>
+				<form class="form-inline mt-3">
+					<input type="date" class="form-control" required/>
+					<input type="date" class="form-control ml-3" required/>
+					<button type="button" class="btn btn-primary ml-3">Count</button>
+				</form>
+				<ul class="list-group mt-3 mb-3">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						Result
+						<span class="badge badge-primary badge-danger font-size-14">0</span>
+					</li>
+				</ul>
 			</div>
+			<!-- 活跃用户DAU -->
+			<div class="container pl-5 pr-5 pt-3 pb-3 mt-4">
+				<h6 class="mt-3"><b class="square"></b> Active User</h6>
+				<form class="form-inline mt-3">
+					<input type="date" class="form-control" required/>
+					<input type="date" class="form-control ml-3" required/>
+					<button type="button" class="btn btn-primary ml-3">Count</button>
+				</form>
+				<ul class="list-group mt-3 mb-3">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						Result
+						<span class="badge badge-primary badge-danger font-size-14">0</span>
+					</li>
+				</ul>
+			</div>				
 		</div>
 
 		<!-- 尾部 -->
@@ -127,6 +154,7 @@
 			</div>
 		</footer>
 	</div>
+
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
