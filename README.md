@@ -1,10 +1,10 @@
 
 
-A BBS JavaForum, with Spring , Spring MVC, MyBatis
+# JavaForum - Spring , Spring MVC, MyBatis
 
 
 
-Implemented: 
+## Implemented: 
 
 ​	Authentification
 
