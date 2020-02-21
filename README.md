@@ -1,7 +1,8 @@
 
 
-# JavaForum - Spring , Spring MVC, MyBatis
+# Community - Q&A Forum
 
+Using Spring , Spring MVC, MyBatis, Redis
 
 
 ## Implemented: 
